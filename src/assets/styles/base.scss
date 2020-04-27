@@ -1,7 +1,9 @@
 $test-color:red;
 $common-container:1200px;//设计中心
-$theme-color:#202328;//主色
-$back-color:#9e9e9e38	;//辅助灰色，底色
+$side-bg-color:#192a5e;//主色
+$side-default-color:rgb(196, 201, 210)	;//辅助灰色，底色
+$side-active-bg-color:#122150;//主色
+$side-active-color:white;//主色
 .clear{
 	position: relative;
 	zoom: 1;
@@ -29,23 +31,3 @@ $back-color:#9e9e9e38	;//辅助灰色，底色
    overflow: hidden;
 }
 
-/* 文章场景相关 */
-$uni-color-title: #2C405A; // 文章标题颜色
-$uni-font-size-title:22px;
-$uni-color-subtitle: #555555; // 二级标题颜色
-$uni-font-size-subtitle:18px;
-$uni-color-paragraph: #3F536E; // 文章段落颜色
-$uni-font-size-paragraph:16px;
-$hk-mid:14px;
-$hk-litter:12px;
-$hk-litter-color:#7b7b7b;
-/* 行为相关颜色 */
-$uni-color-primary: #007aff;
-$uni-color-success: #4cd964;
-$uni-color-warning: #f0ad4e;
-$uni-color-error: #dd524d;
-/* Border Radius */
-$uni-border-radius-sm: 4px;
-$uni-border-radius-base: 6px;
-$uni-border-radius-lg: 12px;
-$uni-border-radius-circle: 50%;

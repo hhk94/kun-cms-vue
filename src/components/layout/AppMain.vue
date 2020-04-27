@@ -1,6 +1,8 @@
 <template>
 	<section class="container">
-		<router-view></router-view>
+		<transition name="el-zoom-in-center">
+			<router-view></router-view>
+		</transition>
 	</section>
 </template>
 
@@ -15,7 +17,7 @@ export default {
 <style lang="scss" scoped>
 .container {
 	height: calc(100vh - 160px);
-	// overflow: hidden;
+	overflow: hidden;
 	background: white;
 }
 </style>

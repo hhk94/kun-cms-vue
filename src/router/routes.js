@@ -1,13 +1,13 @@
-// import homeRouter from './home-router'
+import homeRouter from './home-router'
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   redirect: '/about',
-  //   component: () => import('@/views/Home'),
-  //   children: [...homeRouter],
-  // },
+  {
+    path: '/home',
+    name: 'Home',
+    // redirect: '/about',
+    component: () => import('@/views/Home/Home'),
+    children: [...homeRouter],
+  },
   {
     path: '/login',
     name: 'login',

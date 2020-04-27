@@ -1,26 +1,28 @@
 <template>
 <div style="height:100%;">
 	<el-container>
-		<el-header>Header</el-header>
+		<el-aside width="200px">
+			<side-bar></side-bar>
+		</el-aside>
 		<el-container>
-			<el-aside width="200px">Aside</el-aside>
+			<el-header>Header</el-header>
 			<el-main style="">
 				<app-main></app-main>
 			</el-main>
-		
+			<el-footer>Footer</el-footer>
 		</el-container>
-		<el-footer>Footer</el-footer>
 	</el-container>
 </div>
 </template>
 
 <script>
 
-import {AppMain} from '@/components/layout'
+import {AppMain,SideBar} from '@/components/layout'
 export default {
-  name: 'layout',
+  name: 'Home',
   components:{
-		AppMain
+		AppMain,
+		SideBar
   },
   data() {
     return {
