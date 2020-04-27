@@ -79,7 +79,7 @@ export default {
 	methods:{
 		menuSelect(key, keyPath){//side导航选中
 			console.log(key, keyPath);
-			this.$store.dispatch('Config/set_side_active',key)
+			// this.$store.dispatch('Config/set_side_active',key)
 		},
 		init() {
 			function deepTravel(config, fuc) {

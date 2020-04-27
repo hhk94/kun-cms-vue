@@ -1,9 +1,15 @@
 $test-color:red;
-$common-container:1200px;//设计中心
-$side-bg-color:#192a5e;//主色
-$side-default-color:rgb(196, 201, 210)	;//辅助灰色，底色
-$side-active-bg-color:#122150;//主色
-$side-active-color:white;//主色
+$side-bg-color:#192a5e;//导航默认背景色
+$side-default-color:rgb(196, 201, 210)	;//导航默认文字颜色
+$side-active-bg-color:#122150;//导航选中背景色
+$side-active-color:white;//导航选中文字颜色
+
+$word-color:#3963bc;//标题颜色
+$body-bg:#f9fafb;//body背景色
+
+$title-fz:16px;
+
+
 .clear{
 	position: relative;
 	zoom: 1;

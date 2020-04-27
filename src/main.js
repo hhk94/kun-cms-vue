@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import './plugins/element.js'
 import'@/assets/styles/resset.css'
+import '@/config/global.js'
 
 Vue.config.productionTip = false
 

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import routes from './routes'
-// import store from '../store'
+import store from '../store'
 // import Util from '@/lin/utils/util'
 
 Vue.use(Router)
@@ -23,7 +23,9 @@ router.beforeEach((to, from, next) => {
   //   next({ path: '/login' })
   //   return
   // }
-
+	// console.log(to)
+	//处理side导航默认激活按钮
+	store.dispatch('Config/set_side_active',to.path)
   // TODO: tab 模式重复点击验证
 
   // 权限验证
