@@ -8,23 +8,23 @@
 			<div class="bot-item">
 				<h1 class="title">添加banner</h1>
 				<div class="input-body">
-				  <span>id:</span>
-				  <el-input
-				    placeholder=""
-					disabled
-					v-model="type_item.id"
-				   >
-				  </el-input>
-				 
+				<span>id:</span>
+				<el-input
+				placeholder=""
+				disabled
+				v-model="type_item.id"
+				>
+				</el-input>
+
 				</div>
 				<div class="input-body">
-				  <span>分类名:</span>
-				  <el-input
-				    placeholder="请输入类名"
-					v-model="type_item.typename"
-				   >
-				  </el-input>
-				 
+				<span>分类名:</span>
+				<el-input
+				placeholder="请输入类名"
+				v-model="type_item.typename"
+				>
+				</el-input>
+
 				</div>
 				<div class="submit-body">
 					<el-button type="primary"  class="submit" @click="clear">清空</el-button>
@@ -185,8 +185,11 @@ export default {
 		}
 		
 		.input-body{
+			margin: 0 auto;
 			margin-top: 20px;
 			display: flex;
+			width: 300px;
+			
 			&:first-of-type{
 				margin-top: 100px;
 			}
@@ -197,12 +200,12 @@ export default {
 				padding-right: 10px;
 			}
 			::v-deep .el-input{
-				width: 50%;
+				width: 300px;
 			}
 		}
 		.submit-body{
-			width: 50%;
-			margin: 20px 0 0 118px;
+			width: 300px;
+			margin: 20px auto;
 			display: flex;
 			justify-content: space-around;
 		}

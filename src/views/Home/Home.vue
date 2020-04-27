@@ -63,6 +63,8 @@ export default {
 
 .el-main {
 	background-color: #E9EEF3;
+	overflow-y: auto;
+	height: calc(100vh - 120px);
 	// color: #333;
 	// text-align: center;
 	// line-height: 160px;
