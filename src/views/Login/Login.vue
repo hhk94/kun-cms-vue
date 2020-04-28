@@ -56,7 +56,7 @@ export default {
 			this.loading = false
 			this.$message.success('登录成功')
 			this.$store.dispatch('Config/set_token',result.data.data)
-			this.$router.push('/home/default')
+			this.$router.push('/home')
 		}else{
 			this.loading = false
 			this.$notify({

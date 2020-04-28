@@ -16,7 +16,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-	// height: calc(100vh - 160px);
+	min-height: calc(100vh - 160px);
 	// overflow: hidden;
 	background: white;
 }

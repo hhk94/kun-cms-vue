@@ -55,7 +55,7 @@
 				width="200">
 				<template slot-scope="scope">
 					<el-button type="primary" plain size="mini" @click="type_edit(scope.row)">编辑</el-button>
-					<el-button type="danger" plain size="mini">删除</el-button>
+					<el-button type="danger" plain size="mini" @click="type_delete(scope.row)">删除</el-button>
 				</template>
 				</el-table-column>
 				</el-table>
@@ -117,6 +117,46 @@ export default {
 			type: 'success'
 			});
 		},
+		type_delete(row){
+			this.$confirm('此操作将永久删除该Banner-type, 是否继续?', '提示', {
+				confirmButtonText: '确定',
+				cancelButtonText: '取消',
+				type: 'warning'
+				})
+				.then(() => {
+					let data = {
+						id:row.id
+					}
+					this.banner_type_delete(data)
+				}).catch(() => {
+					this.$message({
+					type: 'info',
+					message: '已取消删除'
+				});          
+			});
+		},
+		async banner_type_delete(data){
+			let result
+			try {
+				this.loading = true
+				result = await Banner.banner_type_delete(data)
+			} catch (e) {
+				this.loading = false
+				console.log(e)
+			}
+			if(result.data.state==window.g.SUCCESS_STATE){
+				this.loading = false
+				this.$message.success(result.data.msg)
+				this.banner_type_list_get()
+			}else{
+				this.loading = false
+				this.$notify({
+					title: '提示',
+					message: result.data.msg,
+					type:'error'
+				});
+			}
+		},
 		async add_banner_type(){
 			if(this.type_item.typename.length==0){
 				this.$notify({
@@ -136,11 +176,7 @@ export default {
 			}
 			if(result.data.state==window.g.SUCCESS_STATE){
 				this.loading = false
-				this.$notify({
-					title: '提示',
-					message: result.data.msg,
-					type:'success'
-				});
+				this.$message.success(result.data.msg)
 				this.banner_type_list_get()
 				this.clear()
 			}else{

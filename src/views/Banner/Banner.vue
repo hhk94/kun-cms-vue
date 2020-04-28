@@ -17,7 +17,7 @@
 					</el-input>
 				</div>
 				<div class="input-body">
-					<span>分类名:</span>
+					<span>banner名:</span>
 					<el-input
 					placeholder="请输入banner名"
 					v-model="banner_item.banner_name"
@@ -107,7 +107,7 @@
 				width="200">
 				<template slot-scope="scope">
 					<el-button type="primary" plain size="mini" @click="banner_edit(scope.row)">编辑</el-button>
-					<el-button type="danger" plain size="mini">删除</el-button>
+					<el-button type="danger" plain size="mini" @click="banner_delete(scope.row)">删除</el-button>
 				</template>
 				</el-table-column>
 				</el-table>
@@ -199,7 +199,6 @@ export default {
 			}
 			if(result.data.state==window.g.SUCCESS_STATE){
 				this.loading = false
-				console.log(result)
 				this.banner_list = result.data.data
 			}else{
 				this.loading = false
@@ -223,8 +222,47 @@ export default {
 			type: 'success'
 			});
 		},
+		banner_delete(row){
+			this.$confirm('此操作将永久删除该Banner, 是否继续?', '提示', {
+				confirmButtonText: '确定',
+				cancelButtonText: '取消',
+				type: 'warning'
+				})
+				.then(() => {
+					let data = {
+						id:row.id
+					}
+					this.banner_item_delete(data)
+				}).catch(() => {
+					this.$message({
+					type: 'info',
+					message: '已取消删除'
+				});          
+			});
+		},
+		async banner_item_delete(data){
+			let result
+			try {
+				this.loading = true
+				result = await Banner.banner_item_delete(data)
+			} catch (e) {
+				this.loading = false
+				console.log(e)
+			}
+			if(result.data.state==window.g.SUCCESS_STATE){
+				this.loading = false
+				this.$message.success(result.data.msg)
+				this.banner_list_get()
+			}else{
+				this.loading = false
+				this.$notify({
+					title: '提示',
+					message: result.data.msg,
+					type:'error'
+				});
+			}
+		},
 		async submit(){
-			console.log(this.banner_item)
 			let result
 			try {
 				this.loading = true
@@ -233,18 +271,17 @@ export default {
 				this.loading = false
 				console.log(e)
 			}
-			let type
 			if(result.data.state==window.g.SUCCESS_STATE){
-				type = 'success'
+				this.loading = false
+				this.$message.success(result.data.msg)
 			}else{
-				type = 'error'
+				this.loading = false
+				this.$notify({
+					title: '提示',
+					message: result.data.msg,
+					type:'error'
+				});
 			}
-			this.loading = false
-			this.$notify({
-				title: '提示',
-				message: result.data.msg,
-				type:type
-			});
 			this.clear()
 			this.banner_list_get()
 		},

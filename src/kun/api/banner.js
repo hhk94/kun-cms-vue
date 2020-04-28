@@ -31,6 +31,21 @@ export default class Banner {
 		return groups
 	}
 	/**
+	 * banner-type删除
+	 * @param {int} id 为空表示新增
+	 * @method delete
+	 */
+	static async banner_type_delete(data) {
+		const groups =  await _axios({
+			method: 'delete',
+			url: 'cms/banner_type_delete',
+			data,
+			handleError: true,
+		})
+		return groups
+	}
+	
+	/**
 	 * 获取banner列表
 	 * @method get
 	 */
@@ -62,5 +77,18 @@ export default class Banner {
 		return groups
 	}
 	
-	
+	/**
+	 * banner删除
+	 * @param {int} id 为空表示新增
+	 * @method delete
+	 */
+	static async banner_item_delete(data) {
+		const groups =  await _axios({
+			method: 'delete',
+			url: 'cms/banner_item_delete',
+			data,
+			handleError: true,
+		})
+		return groups
+	}
 }
