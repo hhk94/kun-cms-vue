@@ -6,6 +6,8 @@
 			<el-row class="tac">
 			<el-col >
 			<el-menu
+			@open="handleOpen"
+			@close="handleClose"
 			:default-active="this.$store.state.Config.side_active"
 			class="el-menu-vertical-demo"
 			@select="menuSelect"
@@ -14,7 +16,7 @@
 			text-color="rgb(196, 201, 210)"
 			active-text-color="white">
 			<div 
-			v-for="item of groups"
+			v-for="(item,index) of groups"
 			:key="item.key"
 			class="item-body">
 				<el-menu-item
@@ -26,13 +28,14 @@
 				
 				<el-submenu 
 				v-if="item.level==2"
-				:index="item.route">
+				:index="String(index)">
 					<template slot="title">
 						<i class="el-icon-location"></i>
 						<span>{{item.title}}</span>
 					</template>
 					<el-menu-item-group>
 						<el-menu-item 
+						v-show="item2.inNav"
 						class="sec-nav"
 						v-for="item2 of item.children"
 						:key="item2.route"
@@ -77,6 +80,15 @@ export default {
 		this.init()
 	},
 	methods:{
+		test(item){
+			console.log(item)
+		},
+		handleOpen(key, keyPath) {
+		console.log(key, keyPath);
+		},
+		handleClose(key, keyPath) {
+		console.log(key, keyPath);
+		},
 		menuSelect(key, keyPath){//side导航选中
 			console.log(key, keyPath);
 			// this.$store.dispatch('Config/set_side_active',key)
@@ -103,6 +115,7 @@ export default {
 					viewRouter.children = viewConfig.children
 				}
 				this.groups.push(viewRouter)
+				console.log(this.groups)
 			})
 		}
 	}
@@ -144,8 +157,20 @@ export default {
 				border: 1px solid $side-default-color;
 			}
 		}
-		::v-deep.is-active{
+		::v-deep.sec-nav.is-active{
 			background-color: $side-active-bg-color!important;
+			&::after{
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				left: 20px;
+				content: '';
+				width: 4px;
+				height: 4px;
+				background-color: $side-active-color;
+				border-radius: 50%;
+				border: 1px solid $side-active-color;
+			}
 		}
 	}
 }
@@ -159,5 +184,12 @@ export default {
 }
 .el-menu-vertical-demo>li{
 	// width: 200px;
+}
+// ::v-deep .is-opened .el-submenu__title {
+//     background: #122150!important;
+	
+// }
+::v-deep .el-menu-item-group__title{
+	padding: 0;
 }
 </style>

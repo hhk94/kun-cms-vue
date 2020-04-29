@@ -25,3 +25,43 @@ hr {height: .02rem;margin: .1rem 0;border: medium none;border-top: .02rem solid 
 a {color: #25a4bb;text-decoration: none;}
 html,body{height: 100%;}
 img{width: 100%;display: block;}
+
+/*css主要部分的样式*/
+/*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+
+::-webkit-scrollbar {
+	/* width:5px; */
+	/*对垂直流动条有效*/
+	/* height: 20px; */
+	/*对水平流动条有效*/
+}
+
+/*定义滚动条的轨道颜色、内阴影及圆角*/
+::-webkit-scrollbar-track{
+	/* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); */
+	/* background-color: white; */
+	/* border-radius: 3px; */
+}
+
+
+/*定义滑块颜色、内阴影及圆角*/
+::-webkit-scrollbar-thumb{
+	/* border-radius: 5px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.1);
+	background-color: rgba(0,0,0,.1); */
+	/* border-radius: 12px;
+	    border: 6px solid rgba(0, 0, 0, 0);
+	    box-shadow: 8px 0 0 #A5ADB7 inset; */
+}
+/* ::-webkit-scrollbar-thumb:hover {
+    box-shadow: 8px 0 0 #4A4A4A inset;
+} */
+/*定义两端按钮的样式*/
+::-webkit-scrollbar-button {
+	/* background-color:white; */
+}
+
+/* 定义右下角汇合处的样式*/
+::-webkit-scrollbar-corner {
+	/* background:white; */
+} 

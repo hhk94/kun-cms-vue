@@ -1,6 +1,6 @@
   
 const getters = {
-	token: state => state.Home.token,
+	token: state => state.Config.token,
   // sidebar: state => state.app.sidebar,
   // size: state => state.app.size,
   // device: state => state.app.device,

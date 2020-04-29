@@ -8,6 +8,7 @@
 - [sass(点击跳转)](https://www.sass.hk/)
 - [element-ui(点击跳转)](https://element.eleme.cn/#/zh-CN/component/menu)
 - [lodash(点击跳转)](https://www.lodashjs.com/)
+- [mavonEditor(点击跳转)](https://www.npmjs.com/package/mavon-editor)
 
 ### 2.文件说明
 
