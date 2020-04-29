@@ -1,5 +1,5 @@
 <template>
-	<div class="ArticleAdd" v-loading="loading">
+	<div class="ArticleList" v-loading="loading">
 		<el-breadcrumb separator-class="el-icon-arrow-right">
 			<el-breadcrumb-item :to="{ path: '/home/default' }">首页</el-breadcrumb-item>
 			<el-breadcrumb-item>文章列表</el-breadcrumb-item>
@@ -69,6 +69,7 @@
 			</el-table>
 			<el-pagination
 			background
+			:page-size="size"
 			@current-change="handleCurrentChange"
 			:current-page="page"
 			layout="prev, pager, next"
@@ -186,7 +187,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.ArticleAdd{
+.ArticleList{
 	padding: 20px;
 	// border: 1px solid black;
 	.bot-body{

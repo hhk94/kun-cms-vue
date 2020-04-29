@@ -33,5 +33,18 @@ export default class Admin {
 		return groups
 	}
 	
+	/**
+	 * 获取用户列表
+	 * @method get
+	 */
+	static async user_list_get(params) {
+		const groups =  await _axios({
+			method: 'get',
+			url: 'cms/user_list_get',
+			params,
+			handleError: true,
+		})
+		return groups
+	}
 	
 }

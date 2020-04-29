@@ -3,7 +3,7 @@ const articleRouter = {
 	name: null,
 	title: '文章管理',
 	type: 'folder',
-	icon: 'iconfont icon-huiyuanguanli',
+	icon: 'el-icon-s-management',
 	filePath: 'views/Article/',
 	order: null,
 	inNav: true,

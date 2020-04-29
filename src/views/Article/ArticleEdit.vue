@@ -1,5 +1,5 @@
 <template>
-	<div class="ArticleAdd" v-loading="loading">
+	<div class="ArticleEdit" v-loading="loading">
 		<el-breadcrumb separator-class="el-icon-arrow-right">
 			<el-breadcrumb-item :to="{ path: '/home/default' }">首页</el-breadcrumb-item>
 			<el-breadcrumb-item>文章新增</el-breadcrumb-item>

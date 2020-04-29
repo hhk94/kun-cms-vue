@@ -6,11 +6,8 @@
 			<el-row class="tac">
 			<el-col >
 			<el-menu
-			@open="handleOpen"
-			@close="handleClose"
 			:default-active="this.$store.state.Config.side_active"
 			class="el-menu-vertical-demo"
-			@select="menuSelect"
 			:router='true'
 			background-color="#192a5e"
 			text-color="rgb(196, 201, 210)"
@@ -30,7 +27,7 @@
 				v-if="item.level==2"
 				:index="String(index)">
 					<template slot="title">
-						<i class="el-icon-location"></i>
+						<i :class="item.icon"></i>
 						<span>{{item.title}}</span>
 					</template>
 					<el-menu-item-group>
@@ -83,16 +80,6 @@ export default {
 		test(item){
 			console.log(item)
 		},
-		handleOpen(key, keyPath) {
-		console.log(key, keyPath);
-		},
-		handleClose(key, keyPath) {
-		console.log(key, keyPath);
-		},
-		menuSelect(key, keyPath){//side导航选中
-			console.log(key, keyPath);
-			// this.$store.dispatch('Config/set_side_active',key)
-		},
 		init() {
 			function deepTravel(config, fuc) {
 				if (Array.isArray(config)) {
@@ -115,7 +102,7 @@ export default {
 					viewRouter.children = viewConfig.children
 				}
 				this.groups.push(viewRouter)
-				console.log(this.groups)
+				// console.log(this.groups)
 			})
 		}
 	}
@@ -185,10 +172,10 @@ export default {
 .el-menu-vertical-demo>li{
 	// width: 200px;
 }
-// ::v-deep .is-opened .el-submenu__title {
-//     background: #122150!important;
+::v-deep .is-opened .el-submenu__title {
+    color: white!important;
 	
-// }
+}
 ::v-deep .el-menu-item-group__title{
 	padding: 0;
 }

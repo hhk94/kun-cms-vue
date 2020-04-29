@@ -1,5 +1,6 @@
 import bannerRouter from './banner.js'
 import articleRouter from './article.js'
+import userRouter from './user.js'
 // import bookConfig from './book' // 引入图书管理路由文件
 // import pluginsConfig from './plugins'
 // import Utils from '@/lin/utils/util'	
@@ -49,7 +50,8 @@ let homeRouter = [
 	// ],
 	// },
 	bannerRouter,
-	articleRouter
+	articleRouter,
+	userRouter
   
 ]
 

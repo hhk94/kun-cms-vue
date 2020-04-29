@@ -3,7 +3,7 @@ const bannerRouter = {
 	name: null,
 	title: 'Banner管理',
 	type: 'folder',
-	icon: 'iconfont icon-huiyuanguanli',
+	icon: 'el-icon-s-ticket',
 	filePath: 'views/admin/',
 	order: null,
 	inNav: true,
