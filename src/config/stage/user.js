@@ -18,6 +18,15 @@ const userRouter = {
 		filePath: 'views/User/UserList',
 		inNav: true,
 	},
+	{
+		route: '/user/user-edit',
+		name: null,
+		title: '用户修改',
+		type: 'folder', // 取 route 为默认加载页
+		icon: 'iconfont icon-huiyuanguanli',
+		filePath: 'views/User/UserEdit',
+		inNav: true,
+	},
 
 	],
 }

@@ -48,18 +48,18 @@
 					<img :src="scope.row.avatar_img_url" alt="">
 				</template>
 			</el-table-column>
-			<!-- <el-table-column
+			<el-table-column
 			fixed="right"
 			label="操作"
 			width="210">
 				<template slot-scope="scope">
 					<el-button
-					@click.native.prevent="articleEdit(scope.row)"
+					@click.native.prevent="userEdit(scope.row)"
 					type="primary"
 					size="small">
 					编辑
 					</el-button>
-					<el-button
+					<!-- <el-button
 					@click.native.prevent="show_blog(scope.row)"
 					type="primary"
 					size="small">
@@ -70,9 +70,9 @@
 					type="danger"
 					size="small">
 					移除
-					</el-button>
+					</el-button> -->
 				</template>
-			</el-table-column> -->
+			</el-table-column>
 			</el-table>
 			<el-pagination
 			background
@@ -106,6 +106,9 @@ export default {
 
 
 	methods: {
+		userEdit(row){
+			this.$router.push({path:'/user/user-edit',query:{id:row.id}})
+		},
 		handleCurrentChange(val) {
 			this.page = val
 			this.user_list_get()

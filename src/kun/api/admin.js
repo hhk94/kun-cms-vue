@@ -46,5 +46,37 @@ export default class Admin {
 		})
 		return groups
 	}
+	/**
+	 * 获取单个用户
+	 * @method get
+	 */
+	static async user_get(params) {
+		const groups =  await _axios({
+			method: 'get',
+			url: 'cms/user_get',
+			params,
+			handleError: true,
+		})
+		return groups
+	}
+	/**
+	  * 方法说明 - 用户修改资料
+	  * @param {int} id 数据库id
+	  * @param {int} avatar_img_id 头像id
+	  * @param {varchar} appid 账号
+	  * @param {varchar} new_psd 新密码
+	  * @param {varchar} psd 旧密码
+	  * @param {varchar} nick_name 昵称
+	  * @method post
+	  */
+	static async user_change(data) {
+		const groups =  await _axios({
+			method: 'post',
+			url: 'cms/user_change',
+			data,
+			handleError: true,
+		})
+		return groups
+	}
 	
 }
