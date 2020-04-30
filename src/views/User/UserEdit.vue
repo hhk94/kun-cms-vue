@@ -72,10 +72,10 @@
 						autocomplete="off"></el-input>
 					</el-form-item>
 				</el-form>
-			  <div slot="footer" class="dialog-footer">
-			    <el-button @click="dialogFormVisible = false">取 消</el-button>
-			    <el-button type="primary" @click="check_psd()">确 定</el-button>
-			  </div>
+				<div slot="footer" class="dialog-footer">
+					<el-button @click="dialogFormVisible = false">取 消</el-button>
+					<el-button type="primary" @click="check_psd()">确 定</el-button>
+				</div>
 			</el-dialog>
 		</div>
 	</div>
@@ -84,6 +84,7 @@
 <script>
 import Config from '@/config'
 import Admin from '@/kun/api/admin'
+
 export default {
 	name: 'UserEdit',
 	data() {
@@ -153,6 +154,7 @@ export default {
 				this.user_item.appid = result.data.data.app_id
 				this.user_item.nick_name = result.data.data.nick_name
 				this.imageUrl = result.data.data.avatar_img_url
+				
 			}else{
 				this.loading = false
 				this.$notify({
@@ -194,7 +196,14 @@ export default {
 			if(result.data.state==window.g.SUCCESS_STATE){
 				this.loading = false
 				console.log(result)
+				console.log('result.data.change_psd'+result.data.change_psd)
+				if(result.data.change_psd){
+					
+					this.$store.dispatch('Config/loginOut')
+				}
+				this.clear()
 				this.$message.success(result.data.msg)
+				
 			}else{
 				this.loading = false
 				this.$notify({
@@ -203,6 +212,11 @@ export default {
 					type:'error'
 				});
 			}
+			
+		},
+		clear(){
+			this.user_item.psd =  ''
+			this.user_item.new_psd =  ''
 		},
 	},
  

@@ -17,6 +17,7 @@ const bannerRouter = {
 		icon: 'iconfont icon-huiyuanguanli',
 		filePath: 'views/Banner/BannerType',
 		inNav: true,
+		needLogin:true,
 	},
 	{
 		route: '/banner/banner',
@@ -26,6 +27,7 @@ const bannerRouter = {
 		icon: 'iconfont icon-huiyuanguanli',
 		filePath: 'views/Banner/Banner',
 		inNav: true,
+		needLogin:true,
 	},
 
 	],

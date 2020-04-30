@@ -6,14 +6,15 @@ import store from '@/store'
 const Plugin = {
   install(vue) {
     // eslint-disable-next-line
-    vue.prototype.$_lin_jump = () => {
+    vue.prototype.$_kun_jump = () => {
       // eslint-disable-line
       if (!Config.openAutoJumpOut) {
         return
       }
       clearTimeout(this.timer)
       this.timer = setTimeout(() => {
-        store.dispatch('loginOut')
+		console.log('a')
+        store.dispatch('Config/loginOut')
         const { origin } = window.location
         window.location.href = origin
       }, Config.stagnateTime)

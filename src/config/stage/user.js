@@ -17,6 +17,7 @@ const userRouter = {
 		icon: 'iconfont icon-huiyuanguanli',
 		filePath: 'views/User/UserList',
 		inNav: true,
+		needLogin:true,
 	},
 	{
 		route: '/user/user-edit',
@@ -26,6 +27,7 @@ const userRouter = {
 		icon: 'iconfont icon-huiyuanguanli',
 		filePath: 'views/User/UserEdit',
 		inNav: true,
+		needLogin:true,
 	},
 
 	],

@@ -5,6 +5,7 @@ import store from './store'
 import './plugins/element.js'
 import'@/assets/styles/resset.css'
 import '@/config/global.js'
+import '@/kun/plugins'
 
 Vue.config.productionTip = false
 

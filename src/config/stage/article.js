@@ -17,6 +17,7 @@ const articleRouter = {
 		icon: 'iconfont icon-huiyuanguanli',
 		filePath: 'views/Article/ArticleList',
 		inNav: true,
+		needLogin:true,
 	},
 	{
 		route: '/article/article-add',
@@ -26,6 +27,7 @@ const articleRouter = {
 		icon: 'iconfont icon-huiyuanguanli',
 		filePath: 'views/Article/ArticleAdd',
 		inNav: true,
+		needLogin:true,
 	},
 	{
 		route: '/article/article-edit',
@@ -35,6 +37,7 @@ const articleRouter = {
 		icon: 'iconfont icon-huiyuanguanli',
 		filePath: 'views/Article/ArticleEdit',
 		inNav: false,
+		needLogin:true,
 	},
 
 	],

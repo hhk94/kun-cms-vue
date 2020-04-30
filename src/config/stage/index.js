@@ -13,6 +13,7 @@ let homeRouter = [
 	route: '/home/default',
 	filePath: 'views/Home/Default.vue',
 	inNav: true,
+	needLogin:true,
 	icon: 'el-icon-info',
 	order: 1,
 	level:1

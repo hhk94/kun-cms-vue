@@ -2,8 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import routes from './routes'
 import store from '../store'
-// import Util from '@/lin/utils/util'
+import { Token } from '@/kun/utils/token'
+import { Notification } from 'element-ui';
 
+
+var tokens = new Token()
 Vue.use(Router)
 
 
@@ -18,12 +21,26 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  // 登录验证
-  // if (isLoginRequired(to.name) && !store.state.logined) {
-  //   next({ path: '/login' })
-  //   return
-  // }
-	// console.log(to)
+	console.log(to)
+	console.log(from)
+	// 登录验证
+	if(to.meta.needLogin){
+		
+		if (!store.getters.token&&!tokens.get_token()) {
+			Notification({
+				title: '警告',
+				message: '请先登录CMS',
+				position: 'top-right',
+				type:'error'
+			});
+			next({ path: '/' })
+			return;
+			
+		}
+	}else{
+		next();
+	}
+	
 	//处理side导航默认激活按钮
 	store.dispatch('Config/set_side_active',to.path)
   // TODO: tab 模式重复点击验证
@@ -42,8 +59,8 @@ router.beforeEach((to, from, next) => {
   //   }
   // }
 
-  // 路由发生变化重新计时
-  // Vue.prototype.$_lin_jump()
+  // 路由发生变化重新计时 - 长时间未操作 退出到登录页
+  Vue.prototype.$_kun_jump()
 
   // 路由发生变化修改页面title
   if (to.meta.title) {

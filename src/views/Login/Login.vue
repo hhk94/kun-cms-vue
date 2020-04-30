@@ -22,6 +22,7 @@
 
 import Admin from '@/kun/api/admin'
 import Utils from '@/kun/utils/util'
+import Config from '@/config'
 
 export default {
   name: 'login',
@@ -56,7 +57,8 @@ export default {
 			this.loading = false
 			this.$message.success('登录成功')
 			this.$store.dispatch('Config/set_token',result.data.data)
-			this.$router.push('/home')
+			
+			this.$router.push(Config.defaultRoute)
 		}else{
 			this.loading = false
 			this.$notify({

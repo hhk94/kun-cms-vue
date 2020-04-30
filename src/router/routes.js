@@ -11,11 +11,15 @@ const routes = [
 	{
 		path: '/',
 		name: 'login',
+		
 		redirect: '/login',
 	},
 	{
 		path: '/login',
 		name: 'login',
+		meta:{
+			needLogin:false
+		},
 		component: () => import('@/views/Login/Login'),
 	},
 	{

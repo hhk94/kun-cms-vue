@@ -1,8 +1,10 @@
 import store from '@/store'
 import { Storage } from '@/kun/utils/storage'
 var storage = new Storage();
+import { Token } from '@/kun/utils/token'
+var tokens = new Token();
 let side_active = storage.get_storage('SIDE_ACTIVE')?storage.get_storage('SIDE_ACTIVE'):'';
-let token = storage.get_storage('USER_INFO')?storage.get_storage('USER_INFO'):'';
+let token = tokens.get_token()?tokens.get_token():'';
 const state = {
 	side_active:side_active,
 	token:token,
@@ -22,13 +24,8 @@ const actions = {
 	set_token({ commit },params) {//登录获取token
 		console.log('store')
 		if(!store.getters.token){
-			let data = {
-				name:'USER_INFO',
-				value:params,
-				expires:3600000
-			}
-			storage.set_storage(data)
-			console.log(params)
+			tokens.set_token(params)
+			// console.log(params)
 			commit('TOKEN', params)
 		}
 	},
@@ -40,6 +37,10 @@ const actions = {
 		}
 		storage.set_storage(data)
 		commit('SIDE_ACTIVE', path)
+	},
+	loginOut({ commit }){
+		tokens.remove_token()
+		commit('TOKEN', '')
 	}
 }
 
