@@ -18,6 +18,13 @@
 4. 请求api（/src/kun/api）
 5. 基础功能封装(/src/kun/utils)
 
+### 3.页面说明
+
+1. 登录（/src/views/Login）
+2. 文章（/src/views/Article）
+3. Banner（/src/views/Banner）
+4. 用户（/src/views/User）
+5. 入口文件（/src/views/Home）
 
 ## Project setup
 ```
