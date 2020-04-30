@@ -8,6 +8,7 @@ let token = tokens.get_token()?tokens.get_token():'';
 const state = {
 	side_active:side_active,
 	token:token,
+	isCollapse:false
 }
 
 const mutations = {
@@ -16,6 +17,9 @@ const mutations = {
 	},
 	SIDE_ACTIVE: (state, path) => {
 		state.side_active = path
+	},
+	ISCOLLAPSE: (state, isCollapse) => {
+		state.isCollapse = isCollapse
 	},
 	
 }
@@ -41,6 +45,9 @@ const actions = {
 	loginOut({ commit }){
 		tokens.remove_token()
 		commit('TOKEN', '')
+	},
+	sideCollapse({ commit },isCollapse){
+		commit('ISCOLLAPSE', isCollapse)
 	}
 }
 

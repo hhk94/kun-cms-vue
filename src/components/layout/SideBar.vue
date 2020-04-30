@@ -6,6 +6,7 @@
 			<el-row class="tac">
 			<el-col >
 			<el-menu
+			:collapse="$store.getters.isCollapse"
 			:default-active="this.$store.state.Config.side_active"
 			class="el-menu-vertical-demo"
 			:router='true'
@@ -28,7 +29,7 @@
 				:index="String(index)">
 					<template slot="title">
 						<i :class="item.icon"></i>
-						<span>{{item.title}}</span>
+						<span slot="title">{{item.title}}</span>
 					</template>
 					<el-menu-item-group>
 						<el-menu-item 
@@ -40,7 +41,11 @@
 					</el-menu-item-group>
 				</el-submenu>
 			</div>
+			
+			
+			
 			</el-menu>
+			
 			</el-col>
 			</el-row>
 		</swiper-slide>
@@ -168,9 +173,6 @@ export default {
 	.swiper-slide{
 		height: auto;
 	}
-}
-.el-menu-vertical-demo>li{
-	// width: 200px;
 }
 ::v-deep .is-opened .el-submenu__title {
     color: white!important;

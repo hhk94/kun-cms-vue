@@ -201,6 +201,7 @@ export default {
 					
 					this.$store.dispatch('Config/loginOut')
 				}
+				this.$store.dispatch('Config/set_token',result.data.data)
 				this.clear()
 				this.$message.success(result.data.msg)
 				

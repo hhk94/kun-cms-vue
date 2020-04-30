@@ -5,7 +5,9 @@
 			<side-bar></side-bar>
 		</el-aside>
 		<el-container>
-			<el-header>Header</el-header>
+			<el-header>
+				<nav-bar></nav-bar>
+			</el-header>
 			<el-main style="">
 				<app-main></app-main>
 			</el-main>
@@ -17,12 +19,13 @@
 
 <script>
 
-import {AppMain,SideBar} from '@/components/layout'
+import {AppMain,SideBar,NavBar} from '@/components/layout'
 export default {
   name: 'Home',
   components:{
 		AppMain,
-		SideBar
+		SideBar,
+		NavBar
   },
   data() {
     return {
@@ -48,10 +51,12 @@ export default {
 
 <style lang="scss" scoped>
 .el-header, .el-footer {
-	background-color: #B3C0D1;
+	// background-color: #B3C0D1;
+	background: #eef4f9;
 	color: #333;
 	text-align: center;
 	line-height: 60px;
+	padding: 0;
 }
 
 .el-aside {
@@ -62,7 +67,8 @@ export default {
 }
 
 .el-main {
-	background-color: #E9EEF3;
+	// background-color: #E9EEF3;
+	background-color: white;
 	overflow-y: auto;
 	height: calc(100vh - 120px);
 	// color: #333;

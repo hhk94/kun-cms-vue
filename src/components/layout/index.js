@@ -1,4 +1,4 @@
-// import NavBar from './NavBar'
+import NavBar from './NavBar'
 import SideBar from './SideBar'
 import AppMain from './AppMain'
 // import ReuseTab from './ReuseTab'
@@ -6,4 +6,4 @@ import AppMain from './AppMain'
 // import BackTop from './BackTop.vue'
 // import User from './User.vue'
 
-export { AppMain,SideBar }
+export { AppMain,SideBar,NavBar }
