@@ -17,6 +17,7 @@
 3. axios封装（/src/kun/plugins）
 4. 请求api（/src/kun/api）
 5. 基础功能封装(/src/kun/utils)
+6. 全局参数（/src/config/global.js）
 
 ### 3.页面说明
 
