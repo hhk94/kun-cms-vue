@@ -27,11 +27,12 @@ const mutations = {
 const actions = {
 	set_token({ commit },params) {//登录获取token
 		console.log('store')
-		if(!store.getters.token){
-			tokens.set_token(params)
-			// console.log(params)
-			commit('TOKEN', params)
-		}
+		// if(!store.getters.token){
+			
+		// }
+		tokens.set_token(params)
+		// console.log(params)
+		commit('TOKEN', params)
 	},
 	set_side_active({ commit },path){//设置side-nav默认激活
 		
