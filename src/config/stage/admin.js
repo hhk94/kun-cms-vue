@@ -21,7 +21,7 @@ const adminRouter = {
         {
           title: '用户列表',
           type: 'view',
-          name: 'userList',
+          name: Symbol('userList'),
           route: '/admin/user/list',
           filePath: 'views/admin/user/UserList.vue',
           inNav: true,
@@ -34,7 +34,7 @@ const adminRouter = {
           inNav: true,
           route: '/admin/user/add',
           icon: 'iconfont icon-add',
-          name: 'userAdd',
+          name:Symbol('userAdd') ,
           filePath: 'views/admin/user/UserAdd.vue',
           permission: ['超级管理员独有权限'],
         },
@@ -52,7 +52,7 @@ const adminRouter = {
         {
           route: '/admin/group/list',
           type: 'view',
-          name: 'groupList',
+          name: Symbol('groupList'),
           inNav: true,
           filePath: 'views/admin/group/GroupList.vue',
           title: '分组列表',
@@ -62,7 +62,7 @@ const adminRouter = {
         {
           route: '/admin/group/add',
           type: 'view',
-          name: 'groupAdd',
+          name: Symbol('groupAdd'),
           filePath: 'views/admin/group/GroupAdd.vue',
           inNav: true,
           title: '添加分组',
