@@ -7,7 +7,7 @@ const userRouter = {
 	filePath: 'views/User/',
 	order: null,
 	inNav: true,
-	level:2,
+	level:1,
 	children: [
 	{
 		route: '/user/user-list',

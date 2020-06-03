@@ -6,8 +6,8 @@ const articleRouter = {
 	icon: 'el-icon-s-management',
 	filePath: 'views/Article/',
 	order: null,
-	inNav: true,
-	level:2,
+	in_nav: true,
+	level:1,
 	children: [
 	{
 		route: '/article/article-list',
@@ -16,8 +16,8 @@ const articleRouter = {
 		type: 'folder', // 取 route 为默认加载页
 		icon: 'iconfont icon-huiyuanguanli',
 		filePath: 'views/Article/ArticleList',
-		inNav: true,
-		needLogin:true,
+		in_nav: true,
+		need_login:true,
 	},
 	{
 		route: '/article/article-add',
@@ -26,8 +26,8 @@ const articleRouter = {
 		type: 'folder', // 取 route 为默认加载页
 		icon: 'iconfont icon-huiyuanguanli',
 		filePath: 'views/Article/ArticleAdd',
-		inNav: true,
-		needLogin:true,
+		in_nav: true,
+		need_login:true,
 	},
 	{
 		route: '/article/article-edit',
@@ -36,8 +36,8 @@ const articleRouter = {
 		type: 'folder', // 取 route 为默认加载页
 		icon: 'iconfont icon-huiyuanguanli',
 		filePath: 'views/Article/ArticleEdit',
-		inNav: false,
-		needLogin:true,
+		in_nav: false,
+		need_login:true,
 	},
 
 	],

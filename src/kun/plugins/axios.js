@@ -27,7 +27,8 @@ const _axios = axios.create(config)
 _axios.interceptors.request.use(
   originConfig => {
     // 有 API 请求重新计时
-    // Vue.prototype.$_lin_jump()
+	// console.log(Vue.prototype)
+    Vue.prototype.$_kun_jump()
 
     const reqConfig = { ...originConfig }
 
@@ -100,8 +101,8 @@ _axios.interceptors.request.use(
       // }
     }
 	// config.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
-	console.log('getterstoken')
-	console.log(store.getters.token)
+	// console.log('getterstoken')
+	// console.log(store.getters.token)
 	if (store.getters.token) {
 		// let each request carry token
 		// ['X-Token'] is a custom headers key

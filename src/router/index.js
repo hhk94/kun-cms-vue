@@ -21,8 +21,8 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-	console.log(to)
-	console.log(from)
+	// console.log(to)
+	// console.log(from)
 	// 登录验证
 	if(to.meta.needLogin){
 		

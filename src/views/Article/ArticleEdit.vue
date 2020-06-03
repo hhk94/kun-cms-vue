@@ -325,7 +325,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.ArticleAdd{
+.ArticleEdit{
 	padding: 20px;
 	// border: 1px solid black;
 	.bot-body{

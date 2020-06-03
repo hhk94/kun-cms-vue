@@ -6,8 +6,8 @@ const bannerRouter = {
 	icon: 'el-icon-s-ticket',
 	filePath: 'views/admin/',
 	order: null,
-	inNav: true,
-	level:2,
+	in_nav: true,
+	level:1,
 	children: [
 	{
 		route: '/banner/banner-type',
@@ -16,8 +16,8 @@ const bannerRouter = {
 		type: 'folder', // 取 route 为默认加载页
 		icon: 'iconfont icon-huiyuanguanli',
 		filePath: 'views/Banner/BannerType',
-		inNav: true,
-		needLogin:true,
+		in_nav: true,
+		need_login:true,
 	},
 	{
 		route: '/banner/banner',
@@ -26,8 +26,8 @@ const bannerRouter = {
 		type: 'folder', // 取 route 为默认加载页
 		icon: 'iconfont icon-huiyuanguanli',
 		filePath: 'views/Banner/Banner',
-		inNav: true,
-		needLogin:true,
+		in_nav: true,
+		need_login:true,
 	},
 
 	],

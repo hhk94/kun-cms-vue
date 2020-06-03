@@ -6,7 +6,7 @@ const adminRouter = {
   icon: 'iconfont icon-huiyuanguanli',
   filePath: 'views/admin/',
   order: null,
-  inNav: true,
+  in_nav: true,
   permission: ['超级管理员独有权限'],
   children: [
     {
@@ -16,7 +16,7 @@ const adminRouter = {
       type: 'folder', // 取 route 为默认加载页
       icon: 'iconfont icon-huiyuanguanli',
       filePath: 'views/admin/user/',
-      inNav: true,
+      in_nav: true,
       children: [
         {
           title: '用户列表',
@@ -24,14 +24,14 @@ const adminRouter = {
           name: Symbol('userList'),
           route: '/admin/user/list',
           filePath: 'views/admin/user/UserList.vue',
-          inNav: true,
+          in_nav: true,
           icon: 'iconfont icon-huiyuanguanli',
           permission: ['超级管理员独有权限'],
         },
         {
           title: '添加用户',
           type: 'view',
-          inNav: true,
+          in_nav: true,
           route: '/admin/user/add',
           icon: 'iconfont icon-add',
           name:Symbol('userAdd') ,
@@ -47,13 +47,13 @@ const adminRouter = {
       type: 'tab', // 取 route 为默认加载页
       icon: null,
       filePath: 'views/admin/group',
-      inNav: true,
+      in_nav: true,
       children: [
         {
           route: '/admin/group/list',
           type: 'view',
           name: Symbol('groupList'),
-          inNav: true,
+          in_nav: true,
           filePath: 'views/admin/group/GroupList.vue',
           title: '分组列表',
           icon: 'iconfont icon-huiyuanguanli',
@@ -64,7 +64,7 @@ const adminRouter = {
           type: 'view',
           name: Symbol('groupAdd'),
           filePath: 'views/admin/group/GroupAdd.vue',
-          inNav: true,
+          in_nav: true,
           title: '添加分组',
           icon: 'iconfont icon-add',
           permission: ['超级管理员独有权限'],

@@ -1,8 +1,8 @@
   
 const getters = {
 	token: state => state.Config.token,
-	isCollapse:state =>state.Config.isCollapse
-  // sidebar: state => state.app.sidebar,
+	isCollapse:state =>state.Config.isCollapse,
+	set_side_bar: state => state.Config.set_side_bar,
   // size: state => state.app.size,
   // device: state => state.app.device,
   // visitedViews: state => state.tagsView.visitedViews,

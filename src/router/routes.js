@@ -22,11 +22,7 @@ const routes = [
 		},
 		component: () => import('@/views/Login/Login'),
 	},
-	{
-		path: '/test',
-		name: 'test',
-		component: () => import('@/views/Home/Home'),
-	},
+	
 	{
 		redirect: '/404',
 		path: '*',

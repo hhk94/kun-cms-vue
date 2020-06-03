@@ -41,5 +41,16 @@ Utils.isObjEqual = (o1,o2)=>{
 	return true;
 }
 
-
+/**
+ * 返回 n 位的随机字符串
+ * @param {Number} n
+ */
+Utils.getRandomStr = (n = 6) => {
+  let str = ''
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890'
+  for (let i = 0; i < n; i += 1) {
+    str += chars.charAt(Math.floor(Math.random() * 62))
+  }
+  return str
+}
 export default Utils

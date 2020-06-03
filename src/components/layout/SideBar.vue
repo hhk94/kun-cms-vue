@@ -1,7 +1,7 @@
 <template>
-	<section class="side-bar">
+	<section class="side-bar" v-if="groups_ok">
 		<div class="logo"><img src="@/assets/img/logo/cms-logo1.png" alt=""></div>
-		<swiper class="swiper" :options="swiperOption">
+		<swiper class="swiper" :options="swiperOption"  ref="mySwiper">
 		<swiper-slide >
 			<el-row class="tac">
 			<el-col >
@@ -18,14 +18,14 @@
 			:key="item.key"
 			class="item-body">
 				<el-menu-item
-				v-if="item.level==1"
+				v-if="item.level==1&&!item.children"
 				:index="item.route">
 					<i :class="item.icon"></i>
 					<span slot="title">{{item.title}}</span>
 				</el-menu-item>
 				
 				<el-submenu 
-				v-if="item.level==2"
+				v-if="item.level==1&&item.children"
 				:index="String(index)">
 					<template slot="title">
 						<i :class="item.icon"></i>
@@ -33,7 +33,7 @@
 					</template>
 					<el-menu-item-group>
 						<el-menu-item 
-						v-show="item2.inNav"
+						v-show="item2.in_nav"
 						class="sec-nav"
 						v-for="item2 of item.children"
 						:key="item2.route"
@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import stageConfig from '@/config/stage' // 引入舞台配置
+// import stageConfig from '@/config/stage' // 引入舞台配置
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
 export default {
@@ -75,17 +75,28 @@ export default {
 				},
 				mousewheel: true
 			},
-			groups:[]
+			groups:[],
+			groups_ok:false
 		}
 	},
 	mounted() {
+		// console.log(this.$refs.mySwiper)
 		this.init()
+		
+	},
+	watch:{
+		'$store.getters.set_side_bar':function(){
+			this.init()
+			console.log('change!')
+		}
 	},
 	methods:{
 		test(item){
 			console.log(item)
 		},
 		init() {
+			// this.groups = this.groups.splice(0,this.groups.length)
+			// console.log(this.groups)
 			function deepTravel(config, fuc) {
 				if (Array.isArray(config)) {
 					config.forEach(subConfig => {
@@ -95,7 +106,8 @@ export default {
 					fuc(config)
 				}
 			}
-			deepTravel(stageConfig, viewConfig => {
+			// console.log(this.$store.getters.set_side_bar)
+			deepTravel(this.$store.getters.set_side_bar, viewConfig => {
 				// 构造舞台view路由
 				const viewRouter = {}
 				viewRouter.route = viewConfig.route
@@ -103,12 +115,15 @@ export default {
 				viewRouter.level = viewConfig.level
 				viewRouter.icon = viewConfig.icon
 				viewRouter.key = Math.random()
-				if(viewConfig.children){
+				if(viewConfig.children&&viewConfig.children.length!=0){
 					viewRouter.children = viewConfig.children
 				}
 				this.groups.push(viewRouter)
 				// console.log(this.groups)
 			})
+			// this.$refs.mySwiper.updateSwiper();
+			// this.$refs.mySwiper.update()
+			this.groups_ok = true
 		}
 	}
 }
@@ -176,6 +191,9 @@ export default {
 }
 ::v-deep .is-opened .el-submenu__title {
     color: white!important;
+	i{
+		color: white!important;
+	}
 	
 }
 ::v-deep .el-menu-item-group__title{
