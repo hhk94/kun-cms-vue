@@ -36,6 +36,9 @@
 - [kun-cms-api github api接口](https://github.com/hhk94/kun-cms-api)
 - [kun-cms-api gitee api接口](https://gitee.com/hkchina/kun-cms-api)
 
+### 5.更新说明
+1. 新增路由模式，前端路由/请求后台获取路由；配置文件 /src/config/index.js 中is_local_router
+
 ## Project setup
 ```
 npm install

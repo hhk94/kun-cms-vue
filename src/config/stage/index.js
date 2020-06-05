@@ -35,10 +35,11 @@ export default homeRouter
 
 //根据config.is_local_router来配置 路由是本地还是后台配置
 export async function add_router(homeRouter){
-	let set_side_bar
+	console.log('config')
+	let set_side_bar = []
 	switch (config.is_local_router){
 		case true:
-			set_side_bar = [...bannerRouter,...articleRouter,...userRouter]
+			set_side_bar = [bannerRouter,articleRouter,userRouter]
 			break;
 		case false:{
 			let params = {

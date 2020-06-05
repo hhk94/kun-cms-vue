@@ -71,10 +71,12 @@ export default {
     
     
   },
-  created() {
-    // 节流登录
-    this.throttleLogin = Utils.throttle(this.login, this.wait)
-  },
+	created() {
+		console.log('login.router')
+		console.log(this.$router)
+		// 节流登录
+		this.throttleLogin = Utils.throttle(this.login, this.wait)
+	},
   components: {},
 }
 </script>

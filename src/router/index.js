@@ -19,11 +19,20 @@ const router = new Router({
   // base: process.env.BASE_URL,
   routes,
 })
+// var getLastUrl=(str,yourStr)=>str.slice(str.lastIndexOf(yourStr))
 
 router.beforeEach((to, from, next) => {
-	// console.log(to)
-	// console.log(from)
+	console.log(to)
+	console.log(from)
+	// let lastUrl = getLastUrl(window.location.href,'/');
+	// console.log(lastUrl)
 	// 登录验证
+	console.log('store.getters.set_side_bar')
+	console.log(store.getters.set_side_bar)
+	console.log(routes)
+	if(to.path!='/login'){
+		store.dispatch('Config/set_side_bar')
+	}
 	if(to.meta.needLogin){
 		
 		if (!store.getters.token&&!tokens.get_token()) {

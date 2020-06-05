@@ -1,11 +1,13 @@
 <template>
-	<section class="side-bar" v-if="groups_ok">
+	<section class="side-bar" >
 		<div class="logo"><img src="@/assets/img/logo/cms-logo1.png" alt=""></div>
-		<swiper class="swiper" :options="swiperOption"  ref="mySwiper">
-		<swiper-slide >
+		<swiper class="swiper" :options="swiperOption"  ref="mySwiper" v-if="this.height">
+		<swiper-slide :style="{'height':height+'px'}">
 			<el-row class="tac">
 			<el-col >
 			<el-menu
+			@open="handleOpen"
+			@close="handleClose"
 			:collapse="$store.getters.isCollapse"
 			:default-active="this.$store.state.Config.side_active"
 			class="el-menu-vertical-demo"
@@ -76,13 +78,22 @@ export default {
 				mousewheel: true
 			},
 			groups:[],
-			groups_ok:false
+			groups_ok:'aaa',
+			height:0
 		}
+	},
+	created() {
+		this.init()
 	},
 	mounted() {
 		// console.log(this.$refs.mySwiper)
-		this.init()
-		
+		// this.init()
+		// console.log(this.swiper)
+	},
+	computed:{
+		// swiper(){
+		// 	// return this.$refs.mySwiper.$swiper
+		// }
 	},
 	watch:{
 		'$store.getters.set_side_bar':function(){
@@ -93,6 +104,16 @@ export default {
 	methods:{
 		test(item){
 			console.log(item)
+		},
+		handleOpen(key, keyPath) {
+			console.log(key, keyPath);
+			let num = this.groups[key].children.length
+			this.height += num*50
+		},
+		handleClose(key, keyPath) {
+			console.log(key, keyPath);
+			let num = this.groups[key].children.length
+			this.height -= num*50
 		},
 		init() {
 			// this.groups = this.groups.splice(0,this.groups.length)
@@ -106,7 +127,7 @@ export default {
 					fuc(config)
 				}
 			}
-			// console.log(this.$store.getters.set_side_bar)
+			let one_num = 0
 			deepTravel(this.$store.getters.set_side_bar, viewConfig => {
 				// 构造舞台view路由
 				const viewRouter = {}
@@ -120,7 +141,10 @@ export default {
 				}
 				this.groups.push(viewRouter)
 				// console.log(this.groups)
+				one_num++
 			})
+			this.height = one_num*56 
+			console.log(this.height)
 			// this.$refs.mySwiper.updateSwiper();
 			// this.$refs.mySwiper.update()
 			this.groups_ok = true
@@ -186,7 +210,8 @@ export default {
 	color: white;
 	overflow: hidden;
 	.swiper-slide{
-		height: auto;
+		// height: auto;
+		// transition: all 0.3s;
 	}
 }
 ::v-deep .is-opened .el-submenu__title {

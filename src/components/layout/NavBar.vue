@@ -5,17 +5,19 @@
 			:class="{'el-icon-s-unfold':true,'rotate':!this.isCollapse}"
 			@click="routate()"
 			></i>
-			<div class="center" >
+			<div class="center" v-if="this.$store.getters.token">
 				<div class="padding-body">
 					<div class="title">坤</div>
 					<el-dropdown>
 						<span class="el-dropdown-link">
-							<div class="avatar"><img :src="this.$store.getters.token.app.avatar_img_url" alt=""></div>
+							<div class="avatar"><img :src="this.$store.getters.token.app.avatar_img_url" alt="" 
+							></div>
 						</span>
 						<el-dropdown-menu slot="dropdown" class="user-box">
 							<div class="user-info">
 								<div class="avatar1" >
-									<img :src="this.$store.getters.token.app.avatar_img_url" alt="">
+									<img :src="this.$store.getters.token.app.avatar_img_url"
+									alt="">
 									<label class="mask" @click="change_user">
 										<i class="el-icon-edit"></i>
 									</label>

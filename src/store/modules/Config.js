@@ -67,38 +67,57 @@ const actions = {
 		commit('TOKEN', '')
 		commit('SIT_SIDE_BAR', [])
 		storage.remove_storage('SIT_SIDE_BAR')
+		router.options.routes[0].children.length = 0
 	},
 	sideCollapse({ commit },isCollapse){//设置左侧导航回收 - 有bug
 		commit('ISCOLLAPSE', isCollapse)
 	},
 	async set_side_bar({ commit }){//配置路由
-		add_router(homeRouter).then(return_router=>{
-			console.log(return_router)
-			let data = {
-				name:'SIT_SIDE_BAR',
-				value:return_router
-			}
-			storage.set_storage(data)
-			commit('SIT_SIDE_BAR', return_router)
-			deepTravel(return_router, viewConfig => {
-				// 构造舞台view路由
-				const viewRouter = {}
-				viewRouter.path = viewConfig.route|| Util.getRandomStr(6)
-				viewRouter.name =Symbol(viewConfig.name)  ||Util.getRandomStr(6)
-				viewRouter.component = () => import(`@/${viewConfig.filePath}`)
-				viewRouter.meta = {
-				title: viewConfig.title,
-				icon: viewConfig.icon,
-				type: viewConfig.type,
-				needLogin:viewConfig.need_login,
-				}
-				homeRouter1.push(viewRouter)
+		if(store.getters.set_side_bar.length!=0){
+			console.log('不为空')
+			//存在
+		}else{
+			console.log('空')
+			add_router(homeRouter).then(return_router=>{
+				
+				// console.log(return_router)
+				// let data = {
+				// 	type:'sessionStorage',
+				// 	name:'SIT_SIDE_BAR',
+				// 	value:return_router
+				// }
+				// storage.set_storage(data)
+				commit('SIT_SIDE_BAR', return_router)
+				deepTravel(return_router, viewConfig => {
+					// 构造舞台view路由
+					const viewRouter = {}
+					viewRouter.path = viewConfig.route|| Util.getRandomStr(6)
+					// viewRouter.name =Symbol(viewConfig.name)  ||Util.getRandomStr(6)
+					viewRouter.name =viewConfig.name  ||Util.getRandomStr(6)
+					viewRouter.component = () => import(`@/${viewConfig.filePath}`)
+					viewRouter.meta = {
+					title: viewConfig.title,
+					icon: viewConfig.icon,
+					type: viewConfig.type,
+					needLogin:viewConfig.need_login,
+					}
+					homeRouter1.push(viewRouter)
+				})
+				// router.options.routes[0].children.splice(0,router.options.routes[0].children.length)
+				
+				router.options.routes[0].children = homeRouter1
+				console.log('router.options.routes')
+				console.log(router.options.routes)
+				router.addRoutes(router.options.routes)
+				router.addRoutes([{
+					redirect: '/404',
+					path: '*',
+				}])
+				console.log(router.options.routes)
 			})
-			// router.options.routes[0].children.splice(0,router.options.routes[0].children.length)
-			router.options.routes[0].children.push(...homeRouter1)
-			// console.log(router.options.routes)
-			// router.addRoutes(homeRouter1)
-		})
+		}
+	
+		
 	},
 	
 	

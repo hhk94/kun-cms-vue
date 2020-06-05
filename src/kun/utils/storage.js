@@ -5,6 +5,7 @@ class Storage {
 	}
 set_storage(params){
 	let obj = {
+		type:'localStorage',
 		name:'',
 		value:'',
 		expires:"",//过期时间
@@ -12,32 +13,45 @@ set_storage(params){
 	}
 	let options = {};
 	Object.assign(options,obj,params);//将obj和传进来的params合并
-	if(options.expires){
-		//如果options.expires设置了的话
-		//以options.name为key，options为值放进去
-		try {
-			// uni.setStorageSync(options.name,JSON.stringify(options));
-			localStorage.setItem(options.name,JSON.stringify(options))
-		} catch (e) {
-			// error
+	// console.log(options.type)
+	if(options.type==='localStorage'){
+		if(options.expires){
+			//如果options.expires设置了的话
+			//以options.name为key，options为值放进去
+			try {
+				// uni.setStorageSync(options.name,JSON.stringify(options));
+				localStorage.setItem(options.name,JSON.stringify(options))
+			} catch (e) {
+				// error
+			}
+		}else{
+			//如果options.expires没有设置，就判断一下value的类型
+			let type = Object.prototype.toString.call(options.value);
+			//如果value是对象或者数组对象的类型，就先用JSON.stringify转一下，再存进去
+			if(type == '[object Object]'){
+				options.value = JSON.stringify(options.value);
+			}
+			if(type == '[object Array]'){
+				options.value = JSON.stringify(options.value);
+			}
+			try {
+				// uni.setStorageSync(options.name,options.value);
+				localStorage.setItem(options.name,options.value)
+			} catch (e) {
+				// error
+			}
 		}
-	}else{
-		//如果options.expires没有设置，就判断一下value的类型
+	}else if(options.type==='sessionStorage'){
 		let type = Object.prototype.toString.call(options.value);
-		//如果value是对象或者数组对象的类型，就先用JSON.stringify转一下，再存进去
 		if(type == '[object Object]'){
 			options.value = JSON.stringify(options.value);
 		}
 		if(type == '[object Array]'){
 			options.value = JSON.stringify(options.value);
 		}
-		try {
-			// uni.setStorageSync(options.name,options.value);
-			localStorage.setItem(options.name,options.value)
-		} catch (e) {
-			// error
-		}
+		sessionStorage.setItem(options.name,options.value)
 	}
+	
 }
 get_storage(name){
 	//尝试获取本地缓存
@@ -47,7 +61,17 @@ get_storage(name){
 		item = localStorage.getItem(name);
 	}catch(e){
 		//TODO handle the exception
+		
+		
 	}
+	if(!item){
+		try{
+			item = sessionStorage.getItem(name);
+		}catch(e){
+			//TODO handle the exception
+		}
+	}
+	// console.log(item)
 	//先将拿到的试着进行json转为对象的形式
 	try{
 		//会过期
@@ -60,7 +84,6 @@ get_storage(name){
 	if(!item){
 		return;
 	}
-	// console.log(item)
 	//如果有startTime的值，说明设置了失效时间
 	// console.log(item)
 	if(item.startTime){
@@ -85,6 +108,11 @@ remove_storage(name){
 	try {
 		// uni.removeStorageSync(name);
 		localStorage.removeItem(name);
+	} catch (e) {
+		// error
+	}
+	try {
+		sessionStorage.removeItem(name);
 	} catch (e) {
 		// error
 	}

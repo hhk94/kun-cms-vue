@@ -6,7 +6,7 @@ const userRouter = {
 	icon: 'el-icon-s-custom',
 	filePath: 'views/User/',
 	order: null,
-	inNav: true,
+	in_nav: true,
 	level:1,
 	children: [
 	{
@@ -16,8 +16,8 @@ const userRouter = {
 		type: 'folder', // 取 route 为默认加载页
 		icon: 'iconfont icon-huiyuanguanli',
 		filePath: 'views/User/UserList',
-		inNav: true,
-		needLogin:true,
+		in_nav: true,
+		need_login:true,
 	},
 	{
 		route: '/user/user-edit',
@@ -26,8 +26,8 @@ const userRouter = {
 		type: 'folder', // 取 route 为默认加载页
 		icon: 'iconfont icon-huiyuanguanli',
 		filePath: 'views/User/UserEdit',
-		inNav: true,
-		needLogin:true,
+		in_nav: true,
+		need_login:true,
 	},
 
 	],
