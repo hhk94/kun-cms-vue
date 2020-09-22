@@ -1,63 +1,98 @@
-# kun-cms-vue
+# vue-admin-template
 
-### 1.开发使用组件、库
+English | [简体中文](./README-zh.md)
 
-- [vuex(点击跳转)](https://vuex.vuejs.org/zh/)
-- [vue-router(点击跳转)](https://router.vuejs.org/zh/)
-- [Vue CLI(点击跳转)](https://cli.vuejs.org/zh/)
-- [sass(点击跳转)](https://www.sass.hk/)
-- [element-ui(点击跳转)](https://element.eleme.cn/#/zh-CN/component/menu)
-- [lodash(点击跳转)](https://www.lodashjs.com/)
-- [mavonEditor(点击跳转)](https://www.npmjs.com/package/mavon-editor)
+> A minimal vue admin template with Element UI & axios & iconfont & permission control & lint
 
-### 2.文件说明
+**Live demo:** http://panjiachen.github.io/vue-admin-template
 
-1. 布局相关文件（/src/components/layout）
-2. 路由配置（/src/config/stage）
-3. axios封装（/src/kun/plugins）
-4. 请求api（/src/kun/api）
-5. 基础功能封装(/src/kun/utils)
-6. 全局参数（/src/config/global.js）
 
-### 3.页面说明
+**The current version is `v4.0+` build on `vue-cli`. If you want to use the old version , you can switch branch to [tag/3.11.0](https://github.com/PanJiaChen/vue-admin-template/tree/tag/3.11.0), it does not rely on `vue-cli`**
 
-1. 登录（/src/views/Login）
-2. 文章（/src/views/Article）
-3. Banner（/src/views/Banner）
-4. 用户（/src/views/User）
-5. 入口文件（/src/views/Home）
 
-### 4.相关文件
+## GitAds
 
-- [kun-cms-vue github 后台模板](https://github.com/hhk94/kun-cms-vue)
-- [kun-cms-vue gitee 后台模板](https://gitee.com/hkchina/kun-cms-vue)
-- [Vue-blog github 前台博客](https://github.com/hhk94/blog)
-- [Vue-blog gitee 前台博客](https://gitee.com/hkchina/vue-blog)
-- [kun-cms-api github api接口](https://github.com/hhk94/kun-cms-api)
-- [kun-cms-api gitee api接口](https://gitee.com/hkchina/kun-cms-api)
+> vue-admin-template is being sponsored by the following tool; please help to support us by taking a look and signing up to a free trial
 
-### 5.更新说明
-1. 新增路由模式，前端路由/请求后台获取路由；配置文件 /src/config/index.js 中is_local_router
+[<img src="https://images.gitads.io/vue-admin-template" alt="GitAds" />](https://tracking.gitads.io/?repo=vue-admin-template)
 
-## Project setup
-```
+
+## Build Setup
+
+```bash
+# clone the project
+git clone https://github.com/PanJiaChen/vue-admin-template.git
+
+# enter the project directory
+cd vue-admin-template
+
+# install dependency
 npm install
+
+# develop
+npm run dev
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
+This will automatically open http://localhost:9528
+
+## Build
+
+```bash
+# build for test environment
+npm run build:stage
+
+# build for production environment
+npm run build:prod
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Advanced
 
-### Lints and fixes files
-```
+```bash
+# preview the release environment effect
+npm run preview
+
+# preview the release environment effect + static resource analysis
+npm run preview -- --report
+
+# code format check
 npm run lint
+
+# code format check and auto fix
+npm run lint -- --fix
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Refer to [Documentation](https://panjiachen.github.io/vue-element-admin-site/guide/essentials/deploy.html) for more information
+
+## Demo
+
+![demo](https://github.com/PanJiaChen/PanJiaChen.github.io/blob/master/images/demo.gif)
+
+## Extra
+
+If you want router permission && generate menu by user roles , you can use this branch [permission-control](https://github.com/PanJiaChen/vue-admin-template/tree/permission-control)
+
+For `typescript` version, you can use [vue-typescript-admin-template](https://github.com/Armour/vue-typescript-admin-template) (Credits: [@Armour](https://github.com/Armour))
+
+## Related Project
+
+- [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
+
+- [electron-vue-admin](https://github.com/PanJiaChen/electron-vue-admin)
+
+- [vue-typescript-admin-template](https://github.com/Armour/vue-typescript-admin-template)
+
+- [awesome-project](https://github.com/PanJiaChen/vue-element-admin/issues/2312)
+
+## Browsers support
+
+Modern browsers and Internet Explorer 10+.
+
+| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari |
+| --------- | --------- | --------- | --------- |
+| IE10, IE11, Edge| last 2 versions| last 2 versions| last 2 versions
+
+## License
+
+[MIT](https://github.com/PanJiaChen/vue-admin-template/blob/master/LICENSE) license.
+
+Copyright (c) 2017-present PanJiaChen
