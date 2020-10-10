@@ -140,6 +140,26 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/video',
+    component: Layout,
+    redirect: '/video/add-video',
+    meta: { title: '视频相关', icon: 'wenzhang-copy' },
+    children: [
+      {
+        path: 'add-video',
+        name: 'AddVideo',
+        component: () => import('@/views/Video/AddVideo'),
+        meta: { title: '新增视频', icon: 'form' }
+      },
+      {
+        path: 'video-list',
+        name: 'VideoList',
+        component: () => import('@/views/Video/VideoList'),
+        meta: { title: '视频列表', icon: 'form' }
+      },
+    ]
+  },
+  {
     path: '/user',
     component: Layout,
     name: 'User',

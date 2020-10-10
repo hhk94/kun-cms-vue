@@ -3,6 +3,7 @@
     <div class="board-column-header">
       {{ headerText }}
     </div>
+
     <draggable
       :list="list"
       v-bind="$attrs"
@@ -10,8 +11,10 @@
       :set-data="setData"
       :belong_id="belongId"
       :belong-name="belongName"
+      animation="200"
       @remove="remove"
     >
+
       <div v-for="element in list" :key="element.id" class="board-item">
         {{ element.id }} - {{ element.typename }}
       </div>
