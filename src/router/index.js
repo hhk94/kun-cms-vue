@@ -146,10 +146,17 @@ export const constantRoutes = [
     meta: { title: '视频相关', icon: 'wenzhang-copy' },
     children: [
       {
-        path: 'add-video',
+        path: 'video-add',
         name: 'AddVideo',
         component: () => import('@/views/Video/AddVideo'),
         meta: { title: '新增视频', icon: 'form' }
+      },
+      {
+        path: 'video-edit/:id',
+        name: 'ChangeVideo',
+        component: () => import('@/views/Video/ChangeVideo'),
+        meta: { title: '修改视频', icon: 'form' },
+        hidden: true
       },
       {
         path: 'video-list',

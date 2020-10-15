@@ -7,8 +7,16 @@
         class="video-item"
       >
         <div class="item-center">
-          <div v-show="item.show===2" class="left" @click="video_change_show(1,item.id)">显示</div>
-          <div v-show="item.show===1" class="left" @click="video_change_show(2,item.id)">隐藏</div>
+
+          <div class="xf-body">
+            <div v-show="item.show===2" class="left" @click="video_change_show(1,item.id)">显示</div>
+            <div v-show="item.show===1" class="left" @click="video_change_show(2,item.id)">隐藏</div>
+
+            <div class="right">
+              <div class="right-item" @click="change(item)">修改</div>
+              <div class="right-item">删除</div>
+            </div>
+          </div>
           <div
             v-show="item.show===2"
             class="cover-bg"
@@ -39,6 +47,10 @@ export default {
   methods: {
     remove(data) {
       this.change_type_belong(data)
+    },
+    change(item) {
+      const { id } = item
+      this.$router.push({ path: '/video/video-edit/' + id })
     },
     async video_list_get() {
       const data = {
@@ -166,27 +178,57 @@ export default {
           background-color: rgba(0,0,0,0.1);
           z-index: 2;
         }
-        .left{
-          display: none;
-          z-index: 3;
-          border-bottom-right-radius: 10px;
-          padding:0 10px;
+        .xf-body{
+          width: 100%;
           position: absolute;
           left: 0;
           top: 0;
-          background: #ec414d;
-          color: #fff;
-          font-size: 12px;
-          line-height: 30px;
-          height: 30px;
-          cursor: pointer;
-          &:hover{
-            border-color: #e31725;
-            background: #e31725;
+          .left{
+            display: none;
+            position: relative;
+            float: left;
+            z-index: 3;
+            width: fit-content;
+            border-bottom-right-radius: 10px;
+            padding:0 10px;
+            background: #ec414d;
             color: #fff;
+            font-size: 12px;
+            line-height: 30px;
+            height: 30px;
+            cursor: pointer;
+            &:hover{
+              border-color: #e31725;
+              background: #e31725;
+              color: #fff;
+            }
+          }
+          .right{
+            float: right;
+            border-bottom: 1px solid #ededed;
+            display: none;
+            .right-item{
+              position: relative;
+              float: left;
+              z-index: 3;
+              background: #ededed;
+              font-size: 12px;
+              line-height: 30px;
+              height: 30px;
+              padding:0 10px;
+              &:nth-of-type(2){
+                border-left:1px solid #c5c5c5;
+              }
+              cursor: pointer;
+              &:hover{
+                background-color: #d9d9d9;
+              }
+            }
+
           }
         }
-        &:hover>.left{
+
+        &:hover .left,&:hover .right{
           display: block;
         }
       }

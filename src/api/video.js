@@ -91,7 +91,20 @@ export default class Video {
     return groups
   }
 
-
+  
+  /**
+   * 获取video详情
+   * @method get
+   */
+  static async get_video_detail(params) {
+  	const groups =  await _axios({
+  		method: 'get',
+  		url: 'cms/get_video_detail',
+  		params,
+  		handleError: true,
+  	})
+  	return groups
+  }
 	/**
 	 * banner删除
 	 * @param {int} id 为空表示新增
