@@ -70,6 +70,22 @@
           <el-button v-else class="button-new-tag" size="small" @click="showInputBelong">+ New Belong</el-button>
         </div>
       </div>
+
+      <div class="input-body">
+        <span class="name">cover：</span>
+        <el-upload
+          class="avatar-uploader"
+          :action="action_banner_url"
+          :show-file-list="false"
+          :on-success="handleAvatarSuccess"
+          :before-upload="beforeAvatarUpload"
+        >
+
+          <img v-if="imageUrl" :src="imageUrl" class="avatar">
+          <i v-else class="el-icon-plus avatar-uploader-icon" />
+        </el-upload>
+      </div>
+
       <mavon-editor
         ref="md"
         v-model="ariticle_item.article_content"
@@ -108,15 +124,17 @@ export default {
         article_input_id: '',
         article_type_id: '',
         article_content: '',
-        article_html: ''
+        article_html: '',
+        article_cover_img_id: ''
       },
       select_group: [],
       // belong归属处理
       inputVisibleBelong: false,
       inputValueBelong: '',
       select_group_belong: [],
-      article_belong_list: []
-
+      article_belong_list: [],
+      action_banner_url: 'cms/add_video_img',
+      imageUrl: ''
     }
   },
   created() {},
@@ -128,9 +146,26 @@ export default {
     }
     console.log(this.ariticle_item.article_id)
     this.article_get(params)
+    this.action_banner_url = window.g.baseURL + this.action_banner_url
   },
 
   methods: {
+    handleAvatarSuccess(res, file) { // 头像上传回调
+      this.imageUrl = URL.createObjectURL(file.raw)
+      this.ariticle_item.article_cover_img_id = res.id
+    },
+    beforeAvatarUpload(file) { // 上传前判断
+      const isJPG = file.type === 'image/jpeg'
+      const isPNG = file.type === 'image/png'
+      const isLt2M = file.size / 1024 / 1024 < 2
+      if (!isJPG && !isPNG) {
+        this.$message.error('上传头像图片只能是 JPG 格式!')
+      }
+      if (!isLt2M) {
+        this.$message.error('上传头像图片大小不能超过 2MB!')
+      }
+      return isJPG || isPNG && isLt2M
+    },
     async article_get(params) {
       let result
       try {
@@ -150,6 +185,7 @@ export default {
         this.ariticle_item.article_type_id = result.data.article_type_id
         this.ariticle_item.article_belong_id = result.data.article_belong_id
         this.ariticle_item.article_content = result.data.article_content
+        this.imageUrl = result.data.cover_img_url
         this.article_type_list.map(item => { // 只比较key和value，不论单引号双引号，或者空格的影响
           if (JSON.stringify(item) == JSON.stringify(result.data.belong_article_type)) {
             this.select_group.push(item)
@@ -537,5 +573,50 @@ export default {
 	margin: 5px auto;
 	padding-bottom: 20px;
 	border-bottom: 1px solid #d9d9d9;
+}
+
+::v-deep .markdown-body img{
+	max-width: 100%;
+	box-sizing: content-box;
+	background-color: transparent;
+	width: auto;
+	height: auto;
+	vertical-align: middle;
+	border: 0;
+	margin: 5px auto;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #d9d9d9;
+}
+
+::v-deep .avatar-uploader .el-upload {
+border: 1px dashed #d9d9d9;
+border-radius: 6px;
+cursor: pointer;
+position: relative;
+overflow: hidden;
+width: 178px;
+margin: 20px auto;
+display: block;
+}
+::v-deep .avatar-uploader .el-upload:hover {
+border-color: #409EFF;
+}
+::v-deep .avatar-uploader-icon {
+font-size: 28px;
+color: #8c939d;
+width: 178px;
+height: 178px;
+line-height: 178px;
+text-align: center;
+}
+::v-deep .avatar {
+width: 178px;
+height: auto;
+display: block;
+position: relative;
+}
+.avatar-des{
+	text-align: center;
+	width: 100%;
 }
 </style>

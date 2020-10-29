@@ -43,6 +43,18 @@
           width="200"
         />
         <el-table-column
+          prop="cover_img_url"
+          label="封面"
+          width="120"
+        >
+          <template slot-scope="scope">
+            <div class="suolueimg">
+              <img :src="scope.row.cover_img_url" alt="" class="">
+            </div>
+
+          </template>
+        </el-table-column>
+        <el-table-column
           prop="b_type_name"
           label="类别"
           width="120"
@@ -308,5 +320,12 @@ export default {
 ::v-deep .el-pagination{
 	width: fit-content;
 	margin: 20px auto 0 auto;
+}
+.suolueimg{
+  width: 100px;
+  height: fit-content;
+  img{
+    width: 100%;
+  }
 }
 </style>

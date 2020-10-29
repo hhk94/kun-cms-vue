@@ -66,6 +66,21 @@
         </div>
       </div>
 
+      <div class="input-body">
+        <span class="name">cover：</span>
+        <el-upload
+          class="avatar-uploader"
+          :action="action_banner_url"
+          :show-file-list="false"
+          :on-success="handleAvatarSuccess"
+          :before-upload="beforeAvatarUpload"
+        >
+
+          <img v-if="imageUrl" :src="imageUrl" class="avatar">
+          <i v-else class="el-icon-plus avatar-uploader-icon" />
+        </el-upload>
+      </div>
+
       <mavon-editor
         ref="md"
         v-model="ariticle_item.article_content"
@@ -113,9 +128,11 @@ export default {
         article_type_id: '',
         article_belong_id: '',
         article_content: '',
-        article_html: ''
-      }
-
+        article_html: '',
+        article_cover_img_id: ''
+      },
+      action_banner_url: 'cms/add_video_img',
+      imageUrl: ''
     }
   },
   created() {},
@@ -126,10 +143,28 @@ export default {
 
     const set_userinfo = this.$store.state.user.set_userinfo
     this.ariticle_item.article_input_id = set_userinfo.app.id
+
+    this.action_banner_url = window.g.baseURL + this.action_banner_url
   },
 
   methods: {
-    // 图片添加
+    handleAvatarSuccess(res, file) { // 头像上传回调
+      this.imageUrl = URL.createObjectURL(file.raw)
+      this.ariticle_item.article_cover_img_id = res.id
+    },
+    beforeAvatarUpload(file) { // 上传前判断
+      const isJPG = file.type === 'image/jpeg'
+      const isPNG = file.type === 'image/png'
+      const isLt2M = file.size / 1024 / 1024 < 2
+      if (!isJPG && !isPNG) {
+        this.$message.error('上传头像图片只能是 JPG 格式!')
+      }
+      if (!isLt2M) {
+        this.$message.error('上传头像图片大小不能超过 2MB!')
+      }
+      return isJPG || isPNG && isLt2M
+    },
+    // 图片添加 - 文本编辑器
     async $imgAdd(pos, $file) {
       console.log(pos, $file)
       // 第一步.将图片上传到服务器.
@@ -156,6 +191,7 @@ export default {
         })
       }
     },
+
     // 富文本修改
     md_change(value, render) {
       // console.log(value)
@@ -540,5 +576,37 @@ export default {
 	margin: 5px auto;
 	padding-bottom: 20px;
 	border-bottom: 1px solid #d9d9d9;
+}
+
+::v-deep .avatar-uploader .el-upload {
+border: 1px dashed #d9d9d9;
+border-radius: 6px;
+cursor: pointer;
+position: relative;
+overflow: hidden;
+width: 178px;
+margin: 20px auto;
+display: block;
+}
+::v-deep .avatar-uploader .el-upload:hover {
+border-color: #409EFF;
+}
+::v-deep .avatar-uploader-icon {
+font-size: 28px;
+color: #8c939d;
+width: 178px;
+height: 178px;
+line-height: 178px;
+text-align: center;
+}
+::v-deep .avatar {
+width: 178px;
+height: auto;
+display: block;
+position: relative;
+}
+.avatar-des{
+	text-align: center;
+	width: 100%;
 }
 </style>
